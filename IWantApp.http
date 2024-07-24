@@ -1,3 +1,12 @@
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{
+	"name": "tech"
+}
+
+###
+
 @IWantApp_HostAddress = http://localhost:5267
 
 GET {{IWantApp_HostAddress}}/weatherforecast/
