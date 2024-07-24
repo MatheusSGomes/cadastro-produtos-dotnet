@@ -16,14 +16,19 @@ public class ApplicationDbContext : DbContext
             .Property(p => p.Name)
             .IsRequired();
 
-        modelBuilder.Entity<Product>()
-            .Property(p => p.Category)
-            .IsRequired();
+        // Gerou erro
+        // modelBuilder.Entity<Product>()
+        //     .Property(p => p.Category)
+        //     .IsRequired();
         
         modelBuilder.Entity<Product>()
             .Property(p => p.Description)
             .HasMaxLength(255)
             .IsRequired(false);
+
+        // Não necessário se já estiver mapeado corretamente
+        modelBuilder.Entity<Category>()
+            .ToTable("Categories");
     }
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configuration)

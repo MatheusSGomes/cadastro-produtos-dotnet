@@ -3,7 +3,8 @@ using IWantApp.Infra.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["ConnectionStrings:IWantDb"]);
+var config = builder.Configuration["ConnectionStrings:IWantDb"];
+builder.Services.AddSqlServer<ApplicationDbContext>(config);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
