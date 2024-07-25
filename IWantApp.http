@@ -1,15 +1,15 @@
-POST http://localhost:3000/categories
+@Host = http://localhost:3000
+
+POST {{ Host }}/categories
 Content-Type: application/json
 
 {
-	"name": "tech"
+	"name": "home"
 }
 
 ###
 
-@IWantApp_HostAddress = http://localhost:5267
-
-GET {{IWantApp_HostAddress}}/weatherforecast/
+GET {{ Host }}/categories
 Accept: application/json
 
 ###
