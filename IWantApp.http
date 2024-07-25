@@ -9,7 +9,7 @@ POST {{ Host }}/categories
 Content-Type: application/json
 
 {
-  "name": "home"
+  "Name": ""
 }
 
 ###
