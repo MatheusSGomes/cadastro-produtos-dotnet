@@ -1,15 +1,25 @@
 @Host = http://localhost:3000
 
+GET {{ Host }}/categories
+Accept: application/json
+
+###
+
 POST {{ Host }}/categories
 Content-Type: application/json
 
 {
-	"name": "home"
+  "name": "home"
 }
 
 ###
 
-GET {{ Host }}/categories
-Accept: application/json
+PUT {{ Host }}/categories/760bbd9e-cad9-4db3-97a9-eccd9ac06493
+Content-Type: application/json
+
+{
+  "name": "house-update",
+  "active": true
+}
 
 ###
