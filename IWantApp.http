@@ -17,11 +17,11 @@ Content-Type: application/json
 
 ###
 
-PUT {{ Host }}/categories/760bbd9e-cad9-4db3-97a9-eccd9ac06493
+PUT {{ Host }}/categories/83112338-142a-46c5-9bef-fead1a2e62aa
 Content-Type: application/json
 
 {
-  "name": "house-update",
+  "name": "Clothes-update",
   "active": true
 }
 
