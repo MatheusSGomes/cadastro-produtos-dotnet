@@ -1,3 +1,6 @@
+# Atalho para criar POST: mptr
+# Atalho CTRL + J para ver todas as opções possíveis
+
 @Host = http://localhost:3000
 
 GET {{ Host }}/categories
@@ -9,7 +12,7 @@ POST {{ Host }}/categories
 Content-Type: application/json
 
 {
-  "Name": ""
+  "name": "Clothes"
 }
 
 ###
