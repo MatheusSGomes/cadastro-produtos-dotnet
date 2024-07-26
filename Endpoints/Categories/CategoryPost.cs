@@ -15,10 +15,7 @@ public class CategoryPost
 
         if (!category.IsValid)
         {
-            var errors = category.Notifications
-                .GroupBy(g => g.Key) // responsável por agrupar todas as chaves da Collection
-                .ToDictionary(g => g.Key, g => g.Select(x => x.Message).ToArray()); // transforma para dictionary
-            return Results.ValidationProblem(errors);
+            return Results.ValidationProblem(category.Notifications.ConvertToProblemDetails());
         }
 
         context.Categories.Add(category);
