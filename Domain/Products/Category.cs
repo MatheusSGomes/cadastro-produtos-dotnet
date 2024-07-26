@@ -11,6 +11,7 @@ public class Category : Entity
     {
         var contract = new Contract<Category>()
             .IsNotNullOrEmpty(name, "Name", "Nome é obrigatório")
+            .IsGreaterThan(name, 3, "Name", "Número de caracteres do nome deve ser superior a 3")
             .IsNotNullOrEmpty(createdBy, "CreatedBy", "Nome de quem criou o a categoria é obrigatório")
             .IsNotNullOrEmpty(editedBy, "EditedBy", "Nome de quem editou a categoria é obrigatório");
 
