@@ -31,8 +31,8 @@ POST {{ Host }}/employees
 Content-Type: application/json
 
 {
-  "Name": "Matheus 1",
-  "Email": "user1@gmail.com",
+  "Name": "Matheus 4",
+  "Email": "user4@gmail.com",
   "Password": "12345678",
-  "EmployeeCode": "002"
+  "EmployeeCode": "004"
 }
