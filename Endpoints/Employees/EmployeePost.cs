@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using IWantApp.Infra.Data;
 using Microsoft.AspNetCore.Identity;
 
@@ -21,6 +22,18 @@ public class EmployeePost
 
         if (!result.Succeeded)
             return Results.BadRequest(result.Errors.First());
+
+        var claimResult = userManager
+            .AddClaimAsync(user, new Claim("EmployeeCode", employeeRequest.EmployeeCode)).Result;
+        
+        if (!claimResult.Succeeded)
+            return Results.BadRequest(claimResult.Errors.First());
+
+        claimResult = userManager
+            .AddClaimAsync(user, new Claim("Name", employeeRequest.Name)).Result;
+
+        if (!claimResult.Succeeded)
+            return Results.BadRequest(claimResult.Errors.First());
 
         return Results.Created($"/employees/{user.Id}", user.Id);
     }
