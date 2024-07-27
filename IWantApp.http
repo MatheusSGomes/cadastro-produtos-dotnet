@@ -26,3 +26,12 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{ Host }}/employees
+Content-Type: application/json
+
+{
+  "name": "Fulano",
+  "email": "fulano@empresa.com",
+  "password": "12345678"
+}
