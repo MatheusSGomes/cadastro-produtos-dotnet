@@ -1,12 +1,15 @@
 using IWantApp.Endpoints.Categories;
 using IWantApp.Infra.Data;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var config = builder.Configuration["ConnectionStrings:IWantDb"];
 builder.Services.AddSqlServer<ApplicationDbContext>(config);
 
-// Add services to the container.
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
