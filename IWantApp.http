@@ -27,19 +27,19 @@ Content-Type: application/json
 
 ###
 
-POST {{ Host }}/employees
+POST {{ Host }}/employees?page=1&row=5
 Content-Type: application/json
 
 {
-  "Name": "User 4",
-  "Email": "user4@gmail.com",
+  "Name": "User 8",
+  "Email": "user8@gmail.com",
   "Password": "12345678",
-  "EmployeeCode": "004"
+  "EmployeeCode": "008"
 }
 
 ###
 
-GET {{ Host }}/employees
+GET {{ Host }}/employees?page=1&rows=5
 Accept: application/json
 
 ###
