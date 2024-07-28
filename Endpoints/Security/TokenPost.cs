@@ -24,14 +24,19 @@ public class TokenPost
         if (!userManager.CheckPasswordAsync(user, loginRequest.Password).Result)
             return Results.BadRequest("Email ou senha inválido");
 
+        var claims = userManager.GetClaimsAsync(user).Result;
+        var subject = new ClaimsIdentity(new Claim[]
+        {
+            new Claim(ClaimTypes.Email, loginRequest.Email),
+            new Claim(ClaimTypes.NameIdentifier, user.Id)
+        });
+        subject.AddClaims(claims);
+
         var key = Encoding.ASCII.GetBytes(configuration["JwtBearerTokenSettings:SecretKey"]);
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
-            Subject = new ClaimsIdentity(new Claim[]
-            {
-                new Claim(ClaimTypes.Email, loginRequest.Email),
-            }),
+            Subject = subject,
             SigningCredentials =
                 new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
             Audience = configuration["JwtBearerTokenSettings:Audience"],

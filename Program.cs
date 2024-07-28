@@ -30,6 +30,13 @@ builder.Services.AddAuthorization(options =>
         .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
         .RequireAuthenticatedUser()
         .Build();
+
+    options.AddPolicy("EmployeePolicy", policy =>
+    {
+        policy
+            .RequireAuthenticatedUser()
+            .RequireClaim("EmployeeCode");
+    });
 });
 
 builder.Services.AddAuthentication(authenticationOptions =>
