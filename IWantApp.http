@@ -2,15 +2,17 @@
 # Atalho CTRL + J para ver todas as opções possíveis
 
 @Host = http://localhost:3000
+@Token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI4QGdtYWlsLmNvbSIsIm5iZiI6MTcyMjE3OTA5NSwiZXhwIjoxNzIyMTgyNjk1LCJpYXQiOjE3MjIxNzkwOTUsImlzcyI6IklXYW50QXBwSXNzdWVyIiwiYXVkIjoiQXVkaWVuY2UifQ.JRAJqW41LOulS6TqmGqemlgt2sRvI3_H1Vs8T6iVS3A
 
 GET {{ Host }}/categories
 Accept: application/json
+Authorization: {{ Token }}
 
 ###
 
 POST {{ Host }}/categories
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI4QGdtYWlsLmNvbSIsIm5iZiI6MTcyMjE3OTA5NSwiZXhwIjoxNzIyMTgyNjk1LCJpYXQiOjE3MjIxNzkwOTUsImlzcyI6IklXYW50QXBwSXNzdWVyIiwiYXVkIjoiQXVkaWVuY2UifQ.JRAJqW41LOulS6TqmGqemlgt2sRvI3_H1Vs8T6iVS3A
+Authorization: {{ Token }}
 
 {
   "name": "Food"
@@ -28,12 +30,13 @@ Content-Type: application/json
 
 ###
 
-POST {{ Host }}/employees?page=1&row=5
+POST {{ Host }}/employees
 Content-Type: application/json
+Authorization: {{Token}}
 
 {
-  "Name": "User 8",
-  "Email": "user8@gmail.com",
+  "Name": "User 9",
+  "Email": "user9@gmail.com",
   "Password": "12345678",
   "EmployeeCode": "008"
 }
@@ -42,6 +45,7 @@ Content-Type: application/json
 
 GET {{ Host }}/employees?page=2&rows=5
 Accept: application/json
+Authorization: {{Token}}
 
 ###
 
