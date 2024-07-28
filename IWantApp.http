@@ -10,9 +10,10 @@ Accept: application/json
 
 POST {{ Host }}/categories
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI4QGdtYWlsLmNvbSIsIm5iZiI6MTcyMjE3OTA5NSwiZXhwIjoxNzIyMTgyNjk1LCJpYXQiOjE3MjIxNzkwOTUsImlzcyI6IklXYW50QXBwSXNzdWVyIiwiYXVkIjoiQXVkaWVuY2UifQ.JRAJqW41LOulS6TqmGqemlgt2sRvI3_H1Vs8T6iVS3A
 
 {
-  "name": "News"
+  "name": "Food"
 }
 
 ###
