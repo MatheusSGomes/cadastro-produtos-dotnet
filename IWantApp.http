@@ -12,7 +12,7 @@ POST {{ Host }}/categories
 Content-Type: application/json
 
 {
-  "name": "Clothes"
+  "name": "News"
 }
 
 ###
