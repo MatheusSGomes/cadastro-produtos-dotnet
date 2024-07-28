@@ -43,3 +43,13 @@ GET {{ Host }}/employees?page=2&rows=5
 Accept: application/json
 
 ###
+
+POST {{ Host }}/token
+Content-Type: application/json
+
+{
+  "email": "user8@gmail.com",
+  "password": "12345678"
+}
+
+###

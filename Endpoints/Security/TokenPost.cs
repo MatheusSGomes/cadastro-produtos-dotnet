@@ -17,12 +17,12 @@ public class TokenPost
         var user = userManager.FindByEmailAsync(loginRequest.Email).Result;
 
         if (user == null)
-            return Results.BadRequest();
-        
+            return Results.BadRequest("Email ou senha inválido");
+
         if (!userManager.CheckPasswordAsync(user, loginRequest.Password).Result)
             return Results.BadRequest("Email ou senha inválido");
 
-        var key = Encoding.ASCII.GetBytes("MY_SECRET");
+        var key = Encoding.ASCII.GetBytes("7585d1f7ceb90fd0b1ab42d0a6ca39fcf55065c7");
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
