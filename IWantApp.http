@@ -53,7 +53,7 @@ POST {{ Host }}/token
 Content-Type: application/json
 
 {
-  "email": "user8@gmail.com",
+  "email": "user7@gmail.com",
   "password": "12345678"
 }
 

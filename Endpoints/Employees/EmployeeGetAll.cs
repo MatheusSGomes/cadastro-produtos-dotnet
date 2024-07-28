@@ -9,6 +9,7 @@ public class EmployeeGetAll
     public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate Handle => Action;
 
+    // [Authorize(Policy = "Employee008Policy")]
     [Authorize(Policy = "EmployeePolicy")]
     public static IResult Action(QueryAllUsersWithClaimName query, int? page, int? rows)
     {
