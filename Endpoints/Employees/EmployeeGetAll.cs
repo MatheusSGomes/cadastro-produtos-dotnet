@@ -1,5 +1,4 @@
-using Dapper;
-using Microsoft.Data.SqlClient;
+using IWantApp.Infra.Data;
 
 namespace IWantApp.Endpoints.Employees;
 
@@ -9,19 +8,15 @@ public class EmployeeGetAll
     public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate Handle => Action;
 
-    public static IResult Action(IConfiguration configuration, int? page = 1, int? rows = 10)
+    public static IResult Action(QueryAllUsersWithClaimName query, int? page, int? rows)
     {
-        var db = new SqlConnection(configuration["ConnectionStrings:IWantDb"]);
+        if (page == null)
+            return Results.BadRequest("O parâmetro page não pode ser nulo");
 
-        var query = @"
-                SELECT users.Id, claims.ClaimValue as Name, users.Email
-                  FROM AspNetUsers users
-            INNER JOIN AspNetUserClaims claims on users.Id = claims.UserId and claims.ClaimType = 'Name' ORDER BY Name
-                OFFSET (@page - 1) * @rows ROWS FETCH NEXT @rows ROWS ONLY
-        ";
-        
-        var employees = db.Query<EmployeeResponse>(query, new { page, rows});
+        if (rows == null)
+            rows = 10;
 
-        return Results.Ok(employees);
+        var allUsers = query.Execute(page.Value, rows.Value);
+        return Results.Ok(allUsers);
     }
 }
