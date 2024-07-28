@@ -9,15 +9,18 @@ public class EmployeeGetAll
     public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate Handle => Action;
 
-    public static IResult Action(int? page, int? rows, IConfiguration configuration)
+    public static IResult Action(IConfiguration configuration, int? page = 1, int? rows = 10)
     {
         var db = new SqlConnection(configuration["ConnectionStrings:IWantDb"]);
-        var employees = db.Query<EmployeeResponse>(@"
-                select users.Id, claims.ClaimValue as Name, users.Email
-                  from AspNetUsers users
-            inner join AspNetUserClaims claims on users.Id = claims.UserId and claims.ClaimType = 'Name'
-              order by Name
-        ");
+
+        var query = @"
+                SELECT users.Id, claims.ClaimValue as Name, users.Email
+                  FROM AspNetUsers users
+            INNER JOIN AspNetUserClaims claims on users.Id = claims.UserId and claims.ClaimType = 'Name' ORDER BY Name
+                OFFSET (@page - 1) * @rows ROWS FETCH NEXT @rows ROWS ONLY
+        ";
+        
+        var employees = db.Query<EmployeeResponse>(query, new { page, rows});
 
         return Results.Ok(employees);
     }
