@@ -11,7 +11,7 @@ public class EmployeeGetAll
 
     // [Authorize(Policy = "Employee008Policy")]
     [Authorize(Policy = "EmployeePolicy")]
-    public static IResult Action(QueryAllUsersWithClaimName query, int? page, int? rows)
+    public static async Task<IResult> Action(QueryAllUsersWithClaimName query, int? page, int? rows)
     {
         if (page == null)
             return Results.BadRequest("O parâmetro page não pode ser nulo");
@@ -19,7 +19,7 @@ public class EmployeeGetAll
         if (rows == null)
             rows = 10;
 
-        var allUsers = query.Execute(page.Value, rows.Value);
+        var allUsers = await query.Execute(page.Value, rows.Value);
         return Results.Ok(allUsers);
     }
 }
