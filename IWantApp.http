@@ -2,37 +2,38 @@
 # Atalho CTRL + J para ver todas as opções possíveis
 
 @Host = http://localhost:3000
-@Token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI4QGdtYWlsLmNvbSIsIm5hbWVpZCI6IjNjYzFmYzIzLWE0ODktNDg4Mi1hNGRjLWZlYTU3YzNiYzQ2MiIsIkVtcGxveWVlQ29kZSI6IjAwOCIsIk5hbWUiOiJVc2VyIDgiLCJuYmYiOjE3MjIyMDQyMDgsImV4cCI6MTcyMjIwNzgwOCwiaWF0IjoxNzIyMjA0MjA4LCJpc3MiOiJJV2FudEFwcElzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.Cs26efGwipUD09ckT-IyFpXSE-8MG4-pi1FOOAErG4I
+@BearerToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI2QGdtYWlsLmNvbSIsIm5hbWVpZCI6ImIxZjExODAxLTcxZWQtNGFiOS1hM2M1LTFjNjRmZTY1OGJmNSIsIkVtcGxveWVlQ29kZSI6IjAwNiIsIk5hbWUiOiJVc2VyIDYiLCJuYmYiOjE3MjIyMTQ3MDAsImV4cCI6MTcyMjMwMTEwMCwiaWF0IjoxNzIyMjE0NzAwLCJpc3MiOiJJV2FudEFwcElzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.Gzjf1oIX0Em8YAYaTYVj3n0sMaa4ngsGgpOsfwHZHw4
 
 GET {{ Host }}/categories
 Accept: application/json
-Authorization: {{ Token }}
+Authorization: {{ BearerToken }}
 
 ###
 
 POST {{ Host }}/categories
 Content-Type: application/json
-Authorization: {{ Token }}
+Authorization: {{ BearerToken }}
 
 {
-  "name": "Food"
+  "name": "Food 1"
 }
 
 ###
 
-PUT {{ Host }}/categories/83112338-142a-46c5-9bef-fead1a2e62aa
+PUT {{ Host }}/categories/3b63ef70-d6eb-41bc-ae0a-a0fd85737b9e
 Content-Type: application/json
+Authorization: {{ BearerToken }}
 
 {
-  "name": "Clothes-update",
-  "active": true
+  "name": "Food 1 - EDITED",
+  "active": false
 }
 
 ###
 
 POST {{ Host }}/employees
 Content-Type: application/json
-Authorization: {{Token}}
+Authorization: {{ BearerToken }}
 
 {
   "Name": "User 9",
@@ -45,7 +46,7 @@ Authorization: {{Token}}
 
 GET {{ Host }}/employees?page=2&rows=5
 Accept: application/json
-Authorization: {{Token}}
+Authorization: {{BearerToken}}
 
 ###
 
@@ -53,7 +54,7 @@ POST {{ Host }}/token
 Content-Type: application/json
 
 {
-  "email": "user7@gmail.com",
+  "email": "user6@gmail.com",
   "password": "12345678"
 }
 
