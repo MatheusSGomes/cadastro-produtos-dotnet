@@ -36,15 +36,15 @@ Content-Type: application/json
 Authorization: {{ BearerToken }}
 
 {
-  "Name": "User 9",
-  "Email": "user9@gmail.com",
+  "Name": "User 10",
+  "Email": "user10@gmail.com",
   "Password": "12345678",
   "EmployeeCode": "008"
 }
 
 ###
 
-GET {{ Host }}/employees?page=2&rows=5
+GET {{ Host }}/employees?page=1&rows=10
 Accept: application/json
 Authorization: {{BearerToken}}
 
