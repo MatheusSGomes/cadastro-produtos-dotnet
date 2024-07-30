@@ -1,4 +1,19 @@
+using Serilog;
+using Serilog.Sinks.MSSqlServer;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, configuration) =>
+{
+    configuration
+        .WriteTo.Console()
+        /*.WriteTo.MSSqlServer(context.Configuration["ConnectionStrings:IWantDb"],
+            sinkOptions: new MSSqlServerSinkOptions
+        {
+            AutoCreateSqlTable = true,
+            TableName = "LogAPI"
+        })*/;
+});
 
 var config = builder.Configuration["ConnectionStrings:IWantDb"];
 builder.Services.AddSqlServer<ApplicationDbContext>(config);
