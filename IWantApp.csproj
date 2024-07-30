@@ -22,6 +22,7 @@
     <Using Include="Microsoft.Data.SqlClient"/>
     <Using Include="Microsoft.IdentityModel.Tokens"/>
     <Using Include="Microsoft.AspNetCore.Authentication.JwtBearer"/>
+    <Using Include="Microsoft.AspNetCore.Diagnostics"/>
 
     <Using Include="IWantApp.Domain.Products"/>
     <Using Include="IWantApp.Infra.Data"/>
