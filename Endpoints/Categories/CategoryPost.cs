@@ -1,7 +1,3 @@
-using System.Security.Claims;
-using IWantApp.Domain.Products;
-using IWantApp.Infra.Data;
-using Microsoft.AspNetCore.Authorization;
 using IResult = Microsoft.AspNetCore.Http.IResult;
 
 namespace IWantApp.Endpoints.Categories;
