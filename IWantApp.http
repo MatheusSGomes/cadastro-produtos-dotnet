@@ -2,7 +2,7 @@
 # Atalho CTRL + J para ver todas as opções possíveis
 
 @Host = http://localhost:3000
-@BearerToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI2QGdtYWlsLmNvbSIsIm5hbWVpZCI6ImIxZjExODAxLTcxZWQtNGFiOS1hM2M1LTFjNjRmZTY1OGJmNSIsIkVtcGxveWVlQ29kZSI6IjAwNiIsIk5hbWUiOiJVc2VyIDYiLCJuYmYiOjE3MjIzMDE1NTEsImV4cCI6MTcyMjM4Nzk1MSwiaWF0IjoxNzIyMzAxNTUxLCJpc3MiOiJJV2FudEFwcElzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.cgPzlxXIbNPr1Cm6BO4szm8yN3ErI5D_sPsF_Wavbow
+@BearerToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI1QGdtYWlsLmNvbSIsIm5hbWVpZCI6ImY0NWQzMmRmLWQ4YTEtNGYwOS1hM2E3LWJlMTI1N2JjY2I4ZCIsIkVtcGxveWVlQ29kZSI6IjAwNSIsIk5hbWUiOiJVc2VyIDUiLCJuYmYiOjE3MjIzODkxMjEsImV4cCI6MTcyMjQ3NTUyMSwiaWF0IjoxNzIyMzg5MTIxLCJpc3MiOiJJV2FudEFwcElzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.1U_ioRxzByJ359MWHBIBz7Fsw3mxctV2Wft6HcpDTAc
 
 GET {{ Host }}/categories
 Accept: application/json
@@ -54,8 +54,27 @@ POST {{ Host }}/token
 Content-Type: application/json
 
 {
-  "email": "user6@gmail.com",
+  "email": "user5@gmail.com",
   "password": "12345678"
 }
+
+###
+
+POST {{ Host }}/products
+Content-Type: application/json
+Authorization: {{ BearerToken }}
+
+{
+  "name": "Produto 2",
+  "description": "melhor produto 2",
+  "categoryId": "abbb0f67-666c-4fe0-bc60-f276c7dcd3ee",
+  "hasStock": true
+}
+
+###
+
+GET {{ Host }}/products
+Accept: application/json
+Authorization: {{ BearerToken }}
 
 ###
