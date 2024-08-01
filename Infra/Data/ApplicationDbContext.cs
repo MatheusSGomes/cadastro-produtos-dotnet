@@ -22,6 +22,11 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
             .HasMaxLength(255)
             .IsRequired(false);
 
+        modelBuilder.Entity<Product>()
+            .Property(p => p.Price)
+            .HasColumnType("decimal(10,2)")
+            .IsRequired();
+
         // Não necessário se já estiver mapeado corretamente
         modelBuilder.Entity<Category>()
             .ToTable("Categories");
