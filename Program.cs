@@ -1,6 +1,6 @@
+using System.Text.Json;
 using IWantApp.Endpoints.Products;
 using Serilog;
-using Serilog.Sinks.MSSqlServer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -110,6 +110,8 @@ app.Map("/error", (HttpContext http) =>
     {
         if (error is SqlException)
             return Results.Problem(title: "Database out", statusCode: 500);
+        else if (error is BadHttpRequestException)
+            return Results.Problem(title: "Erro to convert data to other type", statusCode: 500);
     }
     
     return Results.Problem(title: "Ocorreu um erro", statusCode: 500);
