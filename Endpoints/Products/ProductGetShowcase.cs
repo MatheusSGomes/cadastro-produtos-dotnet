@@ -7,17 +7,8 @@ public class ProductGetShowcase
     public static Delegate Handle => Action;
 
     [AllowAnonymous]
-    public static async Task<IResult> Action(int? page, int? row, string? orderBy, ApplicationDbContext context)
+    public static async Task<IResult> Action(ApplicationDbContext context, int page = 1, int row = 10, string orderBy = "name")
     {
-        if (page == null)
-            page = 1;
-
-        if (row == null)
-            row = 10;
-
-        if (string.IsNullOrEmpty(orderBy))
-            orderBy = "name";
-
         var queryBase = context.Products.Include(product => product.Category)
             .Where(product => product.HasStock && product.Category.Active);
 
