@@ -17,7 +17,7 @@ public class ProductGetShowcase
         else
             queryBase.OrderBy(product => product.Price);
 
-        var queryFilter = queryBase.Skip((page.Value - 1) * row.Value).Take(row.Value);
+        var queryFilter = queryBase.Skip((page - 1) * row).Take(row);
 
         var products = queryFilter.ToList();
 
