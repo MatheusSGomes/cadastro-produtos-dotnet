@@ -115,7 +115,7 @@ app.Map("/error", (HttpContext http) =>
         else if (error is BadHttpRequestException)
             return Results.Problem(title: "Erro to convert data to other type", statusCode: 500);
     }
-    
+
     return Results.Problem(title: "Ocorreu um erro", statusCode: 500);
 });
 

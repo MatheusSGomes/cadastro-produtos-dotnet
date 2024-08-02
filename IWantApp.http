@@ -2,7 +2,7 @@
 # Atalho CTRL + J para ver todas as opções possíveis
 
 @Host = http://localhost:3000
-@BearerToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI4QGdtYWlsLmNvbSIsIm5hbWVpZCI6IjNjYzFmYzIzLWE0ODktNDg4Mi1hNGRjLWZlYTU3YzNiYzQ2MiIsIkVtcGxveWVlQ29kZSI6IjAwOCIsIk5hbWUiOiJVc2VyIDgiLCJuYmYiOjE3MjI0MzEyMTEsImV4cCI6MTcyMjUxNzYxMSwiaWF0IjoxNzIyNDMxMjExLCJpc3MiOiJJV2FudEFwcElzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.JHJXuaT3KW7Yic_MtpiOCjIsXblQUZng543d9P4ie3M
+@BearerToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI4QGdtYWlsLmNvbSIsIm5hbWVpZCI6IjNjYzFmYzIzLWE0ODktNDg4Mi1hNGRjLWZlYTU3YzNiYzQ2MiIsIkVtcGxveWVlQ29kZSI6IjAwOCIsIk5hbWUiOiJVc2VyIDgiLCJuYmYiOjE3MjI1NjA5NjIsImV4cCI6MTc1NDA5Njk2MiwiaWF0IjoxNzIyNTYwOTYyLCJpc3MiOiJJV2FudEFwcElzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.JEczPYZ1RG2NLJOZrk9X8nNCFoAHQ55zzVm9qrYGclA
 
 GET {{ Host }}/categories
 Accept: application/json
@@ -65,11 +65,11 @@ Content-Type: application/json
 Authorization: {{ BearerToken }}
 
 {
-  "name": "Produto 1",
-  "description": "melhor produto 1",
+  "name": "Produto 7",
+  "description": "melhor produto 7",
   "categoryId": "abbb0f67-666c-4fe0-bc60-f276c7dcd3ed",
   "hasStock": true,
-  "price": 10.5
+  "price": 70.3
 }
 
 ###
@@ -80,7 +80,7 @@ Authorization: {{ BearerToken }}
 
 ###
 
-GET {{ Host }}/products/showcase
+GET {{ Host }}/products/showcase?page=1&row=10&orderBy=price
 Accept: application/json
 Authorization: {{ BearerToken }}
 
