@@ -79,3 +79,9 @@ Accept: application/json
 Authorization: {{ BearerToken }}
 
 ###
+
+GET {{ Host }}/products/showcase
+Accept: application/json
+Authorization: {{ BearerToken }}
+
+###
