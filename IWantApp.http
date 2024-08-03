@@ -2,7 +2,7 @@
 # Atalho CTRL + J para ver todas as opções possíveis
 
 @Host = http://localhost:3000
-@BearerToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI4QGdtYWlsLmNvbSIsIm5hbWVpZCI6IjNjYzFmYzIzLWE0ODktNDg4Mi1hNGRjLWZlYTU3YzNiYzQ2MiIsIkVtcGxveWVlQ29kZSI6IjAwOCIsIk5hbWUiOiJVc2VyIDgiLCJuYmYiOjE3MjI1NjA5NjIsImV4cCI6MTc1NDA5Njk2MiwiaWF0IjoxNzIyNTYwOTYyLCJpc3MiOiJJV2FudEFwcElzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.JEczPYZ1RG2NLJOZrk9X8nNCFoAHQ55zzVm9qrYGclA
+@BearerToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudGUyQGVtYWlsLmNvbSIsIm5hbWVpZCI6IjJkOWY4YWIzLWNhOTItNDVhMy1iYzUxLTNjZjk3ZjllZmUxMCIsIkNwZiI6IjAwMDExMTIyMjMzIiwiTmFtZSI6IkNsaWVudGUgMiIsIm5iZiI6MTcyMjY1MTk0NCwiZXhwIjoxNzU0MTg3OTQ0LCJpYXQiOjE3MjI2NTE5NDQsImlzcyI6IklXYW50QXBwSXNzdWVyIiwiYXVkIjoiQXVkaWVuY2UifQ.65M2CQrnxeIg9YhylKr5UsgKdKRQMqKuapNFioYW4Mk
 
 GET {{ Host }}/categories
 Accept: application/json
@@ -54,7 +54,7 @@ POST {{ Host }}/token
 Content-Type: application/json
 
 {
-  "email": "user8@gmail.com",
+  "email": "cliente2@email.com",
   "password": "12345678"
 }
 
@@ -95,5 +95,11 @@ Content-Type: application/json
   "password": "12345678",
   "cpf": "00011122233"
 }
+
+###
+
+GET {{ Host }}/clients
+Accept: application/json
+Authorization: {{ BearerToken }}
 
 ###
