@@ -1,9 +1,12 @@
+using IWantApp.Domain.Orders;
+
 namespace IWantApp.Infra.Data;
 
 public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 {
     public DbSet<Product> Products { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Order> Orders { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base (options) { }
 
@@ -27,9 +30,22 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
             .HasColumnType("decimal(10,2)")
             .IsRequired();
 
-        // Não necessário se já estiver mapeado corretamente
         modelBuilder.Entity<Category>()
             .ToTable("Categories");
+
+        modelBuilder.Entity<Order>()
+            .Property(order => order.ClientId)
+            .IsRequired();
+
+        modelBuilder.Entity<Order>()
+            .Property(order => order.DeliveryAddress)
+            .IsRequired();
+
+        // Relacionamento. 1 pedido (order) -> tem muitos -> produtos
+        modelBuilder.Entity<Order>()
+            .HasMany(order => order.Products)
+            .WithMany(product => product.Orders)
+            .UsingEntity(x => x.ToTable("OrderProducts"));
     }
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configuration)
