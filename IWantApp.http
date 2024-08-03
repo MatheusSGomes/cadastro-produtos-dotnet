@@ -36,10 +36,10 @@ Content-Type: application/json
 Authorization: {{ BearerToken }}
 
 {
-  "Name": "User 11",
-  "Email": "user11@gmail.com",
+  "Name": "User 12",
+  "Email": "user12@gmail.com",
   "Password": "12345678",
-  "EmployeeCode": "008"
+  "EmployeeCode": "012"
 }
 
 ###
