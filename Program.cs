@@ -1,4 +1,5 @@
 using System.Text.Json;
+using IWantApp.Domain.Users;
 using IWantApp.Endpoints.Clients;
 using IWantApp.Endpoints.Products;
 using Serilog;
@@ -30,6 +31,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 }).AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddScoped<QueryAllUsersWithClaimName>();
+builder.Services.AddScoped<UserCreator>();
 
 builder.Services.AddAuthorization(options =>
 {

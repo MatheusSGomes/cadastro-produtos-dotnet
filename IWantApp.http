@@ -90,8 +90,8 @@ POST {{ Host }}/clients
 Content-Type: application/json
 
 {
-  "email": "cliente1@email.com",
-  "name": "Cliente 1",
+  "email": "cliente2@email.com",
+  "name": "Cliente 2",
   "password": "12345678",
   "cpf": "00011122233"
 }
