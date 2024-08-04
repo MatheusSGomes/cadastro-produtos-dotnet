@@ -29,6 +29,7 @@ public class ProductGetShowcase
         var products = queryFilter.ToList();
 
         var results = products.Select(product => new ProductResponse(
+            product.Id,
             product.Name,
             product.Category.Name,
             product.Description,

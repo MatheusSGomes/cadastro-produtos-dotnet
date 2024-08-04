@@ -2,7 +2,7 @@
 # Atalho CTRL + J para ver todas as opções possíveis
 
 @Host = http://localhost:3000
-@BearerToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudGUyQGVtYWlsLmNvbSIsIm5hbWVpZCI6IjJkOWY4YWIzLWNhOTItNDVhMy1iYzUxLTNjZjk3ZjllZmUxMCIsIkNwZiI6IjAwMDExMTIyMjMzIiwiTmFtZSI6IkNsaWVudGUgMiIsIm5iZiI6MTcyMjY1MTk0NCwiZXhwIjoxNzU0MTg3OTQ0LCJpYXQiOjE3MjI2NTE5NDQsImlzcyI6IklXYW50QXBwSXNzdWVyIiwiYXVkIjoiQXVkaWVuY2UifQ.65M2CQrnxeIg9YhylKr5UsgKdKRQMqKuapNFioYW4Mk
+@BearerToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudGUyQGVtYWlsLmNvbSIsIm5hbWVpZCI6IjJkOWY4YWIzLWNhOTItNDVhMy1iYzUxLTNjZjk3ZjllZmUxMCIsIkNwZiI6IjAwMDExMTIyMjMzIiwiTmFtZSI6IkNsaWVudGUgMiIsIm5iZiI6MTcyMjczNDU0MCwiZXhwIjoxNzU0MjcwNTQwLCJpYXQiOjE3MjI3MzQ1NDAsImlzcyI6IklXYW50QXBwSXNzdWVyIiwiYXVkIjoiQXVkaWVuY2UifQ.qxWQOfXx3xQmUtR5sy4Igh4Nxdwrd3xvPq8LYgdrHwU
 
 GET {{ Host }}/categories
 Accept: application/json
@@ -101,5 +101,19 @@ Content-Type: application/json
 GET {{ Host }}/clients
 Accept: application/json
 Authorization: {{ BearerToken }}
+
+###
+
+POST {{ Host }}/orders
+Content-Type: application/json
+Authorization: {{ BearerToken }}
+
+{
+  "productsIds": [
+    "9ca664f0-de3a-4f8f-8dc0-77358210c496",
+    "c1b48af2-69a4-4f11-8c45-c6cf12c778b8"
+  ],
+  "deliveryAddress": "Endereço minha casa"
+}
 
 ###
