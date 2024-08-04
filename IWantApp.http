@@ -113,7 +113,7 @@ Authorization: {{ BearerToken }}
     "9ca664f0-de3a-4f8f-8dc0-77358210c496",
     "c1b48af2-69a4-4f11-8c45-c6cf12c778b8"
   ],
-  "deliveryAddress": "Endereço minha casa 1"
+  "deliveryAddress": "Meu endereço 1"
 }
 
 ###

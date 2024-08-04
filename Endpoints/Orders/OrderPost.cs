@@ -14,16 +14,16 @@ public class OrderPost
         var clientId = http.User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value;
         var clientName = http.User.Claims.First(c => c.Type == "Name").Value;
 
-        if (orderRequest.ProductsIds == null || !orderRequest.ProductsIds.Any())
-            return Results.BadRequest("Produto é obrigatório para pedido");
-
-        if (string.IsNullOrEmpty(orderRequest.DeliveryAddress))
-            return Results.BadRequest("Endereço de entrega é obrigatório");
-
-        var productsFound = context.Products.Where(p => orderRequest.ProductsIds.Contains(p.Id)).ToList();
+        List<Product> productsFound = null;
+        
+        if (orderRequest.ProductsIds != null && orderRequest.ProductsIds.Any())
+            productsFound = context.Products.Where(p => orderRequest.ProductsIds.Contains(p.Id)).ToList();
 
         var order = new Order(clientId, clientName, productsFound, orderRequest.DeliveryAddress);
 
+        if (!order.IsValid)
+            return Results.ValidationProblem(order.Notifications.ConvertToProblemDetails());
+        
         await context.Orders.AddAsync(order);
         await context.SaveChangesAsync();
 
