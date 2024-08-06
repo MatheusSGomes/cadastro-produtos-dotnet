@@ -8,18 +8,25 @@ public class OrderGetById
     public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate Handle => Action;
 
-    private static async Task<IResult> Action(Guid id, ApplicationDbContext context, HttpContext http)
+    [Authorize]
+    private static async Task<IResult> Action(Guid id, ApplicationDbContext context, HttpContext http, UserManager<IdentityUser> userManager)
     {
-        var userId = http.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-        var order = await context.Orders.Where(order => order.Id == id).FirstOrDefaultAsync();
+        var clientClaim = http.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+        var employeeClaim = http.User.Claims.FirstOrDefault(c => c.Type == "EmployeeCode");
 
-        var isNotClient = order.ClientId != userId;
-        var isNotEmployee = http.User.Claims.FirstOrDefault(c => c.Type == "EmployeeCode").Value != null;
+        // var order = await context.Orders.Where(order => order.Id == id).FirstOrDefaultAsync();
+        var order = await context.Orders.Include(o => o.Products).Where(order => order.Id == id).FirstOrDefaultAsync();
 
-        if (isNotClient || isNotEmployee)
-            return Results.BadRequest("Apenas cliente pode ter acesso ao seu pedido");
+        if (order.ClientId != clientClaim.Value && employeeClaim == null)
+            return Results.Forbid();
 
-        var orderResponse = new OrderResponse(order.Id, order.ClientId, order.Total, order.DeliveryAddress);
+        // var client = await context.Users.Where(u => u.Id == clientClaim.Value).FirstAsync();
+        var client = await userManager.FindByIdAsync(order.ClientId);
+
+        var productsResponse = order.Products.Select(p => new OrderProduct(p.Id, p.Name)).ToList();
+
+        var orderResponse = new OrderResponse(order.Id, client.Email, productsResponse, order.Total, order.DeliveryAddress);
+
         return Results.Ok(orderResponse);
     }
 }

@@ -17,7 +17,7 @@ public class TokenPost
         log.LogInformation("Getting token");
         log.LogWarning("Warning token");
         log.LogError("Erro token");
-        
+
         var user = userManager.FindByEmailAsync(loginRequest.Email).Result;
 
         if (user == null)

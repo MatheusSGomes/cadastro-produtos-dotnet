@@ -2,7 +2,7 @@
 # Atalho CTRL + J para ver todas as opções possíveis
 
 @Host = http://localhost:3000
-@BearerToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudGUxQGVtYWlsLmNvbSIsIm5hbWVpZCI6IjM2MjI0ZDEwLTUyZTEtNDVhMS1hMzg2LWY0Njc4MmRkZDk2NCIsIkNwZiI6IjAwMDExMTIyMjMzIiwiTmFtZSI6IkNsaWVudGUgMSIsIm5iZiI6MTcyMjczNjM2MywiZXhwIjoxNzU0MjcyMzYzLCJpYXQiOjE3MjI3MzYzNjMsImlzcyI6IklXYW50QXBwSXNzdWVyIiwiYXVkIjoiQXVkaWVuY2UifQ.BiRM-E7pxXcWaREHKhI-3zDmXZ49IEbxuxZsBs6kc_s
+@BearerToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI4QGdtYWlsLmNvbSIsIm5hbWVpZCI6IjNjYzFmYzIzLWE0ODktNDg4Mi1hNGRjLWZlYTU3YzNiYzQ2MiIsIkVtcGxveWVlQ29kZSI6IjAwOCIsIk5hbWUiOiJVc2VyIDgiLCJuYmYiOjE3MjI5NzgyNjYsImV4cCI6MTc1NDUxNDI2NiwiaWF0IjoxNzIyOTc4MjY2LCJpc3MiOiJJV2FudEFwcElzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.raaWzcGGtFM4T9rngTH5WazstdKsSjU4KqABUY-ipgo
 
 GET {{ Host }}/categories
 Accept: application/json
@@ -54,7 +54,7 @@ POST {{ Host }}/token
 Content-Type: application/json
 
 {
-  "email": "cliente1@email.com",
+  "email": "user8@gmail.com",
   "password": "12345678"
 }
 
