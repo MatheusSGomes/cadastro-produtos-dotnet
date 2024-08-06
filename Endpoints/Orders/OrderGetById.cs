@@ -8,8 +8,10 @@ public class OrderGetById
     public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate Handle => Action;
 
-    private static async Task<IResult> Action(string id)
+    private static async Task<IResult> Action(Guid id, ApplicationDbContext context)
     {
-        return Results.Ok("Deu certo: " + id);
+        var order = await context.Orders.Where(order => order.Id == id).FirstOrDefaultAsync();
+        var orderResponse = new OrderResponse(order.Id, order.ClientId, order.Total, order.DeliveryAddress);
+        return Results.Ok(orderResponse);
     }
 }
