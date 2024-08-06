@@ -117,3 +117,9 @@ Authorization: {{ BearerToken }}
 }
 
 ###
+
+GET {{ Host }}/order/b9bc3271-246a-42b1-be0a-033ed8439d35
+Accept: application/json
+Authorization: {{ BearerToken }}
+
+###
