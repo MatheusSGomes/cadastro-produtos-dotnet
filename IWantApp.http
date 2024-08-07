@@ -123,3 +123,9 @@ Accept: application/json
 Authorization: {{ BearerToken }}
 
 ###
+
+GET {{ Host }}/products/sold
+Accept: application/json
+Authorization: {{ BearerToken }}
+
+###

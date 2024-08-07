@@ -32,6 +32,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 
 builder.Services.AddScoped<QueryAllUsersWithClaimName>();
 builder.Services.AddScoped<UserCreator>();
+builder.Services.AddScoped<QueryAllProductsSold>();
 
 builder.Services.AddAuthorization(options =>
 {
@@ -110,8 +111,8 @@ app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handle);
 
 app.MapMethods(ProductPost.Template, ProductPost.Methods, ProductPost.Handle);
 app.MapMethods(ProductGetAll.Template, ProductGetAll.Methods, ProductGetAll.Handle);
-
 app.MapMethods(ProductGetShowcase.Template, ProductGetShowcase.Methods, ProductGetShowcase.Handle);
+app.MapMethods(ProductsSoldGet.Template, ProductsSoldGet.Methods, ProductsSoldGet.Handle);
 
 app.MapMethods(ClientPost.Template, ClientPost.Methods, ClientPost.Handle);
 app.MapMethods(ClientGet.Template, ClientGet.Methods, ClientGet.Handle);
